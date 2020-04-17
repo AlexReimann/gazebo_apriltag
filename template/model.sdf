@@ -6,7 +6,7 @@
       <visual name='main_Visual'>
         <geometry>
           <box>
-          <size>1.0 1.0 0.01</size>
+          <size>tag_size tag_size tag_thickness</size>
           </box>
         </geometry>
            <material>
