@@ -14,9 +14,10 @@ class Generator:
                 with open('template/materials/scripts/Apriltag.material', 'r') as f:
                         self.material_template = f.read()
 
-        def generate(self, tag_directory, tag_name, tag_size, tag_size_m, tag_thickness):
-                img = cv2.imread('%s/%s.png' % (tag_directory, tag_name), 0)
+        def generate(self, tag_directory, original_name, tag_name, tag_size, tag_size_m, tag_thickness):
+                img = cv2.imread('%s/%s.png' % (tag_directory, original_name), 0)
                 img = cv2.resize(img, (tag_size, tag_size), interpolation=cv2.INTER_NEAREST)
+
 
                 if not os.path.exists('models/April%s/materials/scripts' % tag_name):
                         os.makedirs('models/April%s/materials/scripts' % tag_name)
@@ -46,8 +47,8 @@ def main():
         tag_size = 1024
 
         generator = Generator()
-        for i in range(16):
-                generator.generate('apriltag-imgs/tag36h11', 'tag36_11_%05d' % i, tag_size, 0.16, 0.01) 
+        for i in range(5):
+                generator.generate('apriltag-imgs/tagStandard41h12', 'tag41_12_%05d' % i, 'tag41_12_7cm_%05d' % i, tag_size, 0.07, 0.01)
 
 
 if __name__ == '__main__':
